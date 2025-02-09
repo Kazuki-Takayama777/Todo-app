@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Todo List</h1>
+        <form action="/add" method="POST">
+            <input type="text" name="title" placeholder="タスク名" required>
+            <input type="text" name="description" placeholder="説明">
+            <input type="date" name="due_date" placeholder="期限">
+            <input type="text" name="tags" placeholder="タグ (カンマ区切り)">
+            <button type="submit">追加</button>
+        </form>
+        <ul id="task-list">
+            {% for task in tasks %}
+            <li class="task-item {% if task.completed %}completed{% endif %}" data-id="{{ task.id }}">
+                <div class="task-content">
+                    <h3>{{ task.title }}</h3>
+                    <p>{{ task.description }}</p>
+                    <p>期限: {{ task.due_date }}</p>
+                    <p>タグ: {{ task.tags|join(', ') }}</p>
+                </div>
+                <div class="task-actions">
+                    <form action="/toggle/{{ task.id }}" method="POST" style="display:inline;">
+                        <button type="submit">{{ '未完了' if task.completed else '完了' }}</button>
+                    </form>
+                    <form action="/delete/{{ task.id }}" method="POST" style="display:inline;">
+                        <button type="submit">削除</button>
+                    </form>
+                    <button onclick="editTask({{ task.id }})">編集</button>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
