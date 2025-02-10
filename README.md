@@ -19,7 +19,7 @@ Flask を使用してバックエンドを構築し、HTML/CSS/JavaScript でフ
 
 ## ファイル構成
 
-todo-app/ │── static/ # 静的ファイル (CSS, JS) │ ├── styles.css # スタイルシート │ ├── script.js # クライアント側の処理 │── templates/ # HTML テンプレート │ ├── index.html # メイン画面 │── data/ # タスクデータ保存用 │ ├── tasks.json # タスクデータ (初回実行時に作成) │── app.py # Flask アプリケーション │── requirements.txt # 必要なパッケージ一覧 │── README.md # このファイル
+todo-app/ │── static/ # 静的ファイル (CSS, JS) │ ├── styles.css # スタイルシート │ ├── script.js # クライアント側の処理 │── templates/ # HTML テンプレート │ ├── index.html # メイン画面 │── data/ # タスクデータ保存用 │ ├── tasks.json # タスクデータ (初回実行時に作成) │── app.py # Flask アプリケーション │── README.md # このファイル
 
 
 ## セットアップ & 実行方法
